@@ -303,11 +303,11 @@ service mac-update /system/bin/mac-update
     user wifi
     oneshot
     
-service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
-    class main
-    user bluetooth
-    group system bluetooth
-    oneshot 
+#service bdAddrLoader /system/bin/bdAddrLoader -f /persist/bluetooth/.bdaddr -h -x
+#    class main
+#    user bluetooth
+#    group system bluetooth
+#    oneshot 
 
 service hciattach /system/bin/sh /system/etc/init.find5.bt.sh
     class late_start
