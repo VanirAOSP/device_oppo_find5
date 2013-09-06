@@ -274,6 +274,29 @@ PRODUCT_COPY_FILES += \
 	system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
 	system/extras/bugmailer/send_bug:system/bin/send_bug
 
+
+# other apps
+PRODUCT_PACKAGES += \
+    Apollo \
+   	DSPManager \
+   	libcyanogen-dsp \
+    libncurses \
+    bash \
+    CMFileManager \
+    LockClock \
+    Torch \
+	CMTorch \
+	Trebuchet \
+	Find5Parts
+
+# selinux
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.selinux=1
+
+# SELinux filesystem labels
+PRODUCT_COPY_FILES += \
+    device/oppo/find5/configs/50selinuxrelabel:system/etc/init.d/50selinuxrelabel
+	
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, frameworks/native/build/phone-xxhdpi-2048-hwui-memory.mk)
 
