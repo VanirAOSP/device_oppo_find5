@@ -94,7 +94,7 @@
                    bitRate="128000"
                    width="320"
                    height="240"
-                   frameRate="15" />
+                   frameRate="30" />
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -228,7 +228,7 @@
                    bitRate="128000"
                    width="320"
                    height="240"
-                   frameRate="15" />
+                   frameRate="30" />
             <Audio codec="amrnb"
                    bitRate="12200"
                    sampleRate="8000"
@@ -372,7 +372,7 @@
         minChannels="1" maxChannels="1" />
 
     <AudioEncoderCap name="amrwb" enabled="true"
-        minBitRate="6600" maxBitRate="23050"
+        minBitRate="6600" maxBitRate="23850"
         minSampleRate="16000" maxSampleRate="16000"
         minChannels="1" maxChannels="1" />
 
