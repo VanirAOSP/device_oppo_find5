@@ -16,8 +16,8 @@
 
 TARGET_SPECIFIC_HEADER_PATH := device/oppo/find5/include
 
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp -DQCOM_HARDWARE -DDISABLE_HW_ID_MATCH_CHECK
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp -DQCOM_HARDWARE -DDISABLE_HW_ID_MATCH_CHECK
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
@@ -25,7 +25,6 @@ TARGET_CPU_VARIANT := krait
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
-BOARD_USES_QCOM_HARDWARE := true
 
 # Krait optimizations
 TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
@@ -73,19 +72,24 @@ WIFI_DRIVER_FW_PATH_AP           := "ap"
 
 BOARD_EGL_CFG := device/oppo/find5/configs/egl.cfg
 
+# global
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DQCOM_BSP
+
 # Display
 TARGET_QCOM_DISPLAY_VARIANT := caf
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
-COMMON_GLOBAL_CFLAGS += -DNEW_ION_API 
 TARGET_USES_C2D_COMPOSITION := true
 
+# Recovery
+TARGET_RECOVERY_FSTAB := device/oppo/find5/configs/fstab.find5
+RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/oppo/find5/recovery/recovery_keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
-TARGET_RECOVERY_FSTAB = device/oppo/find5/configs/fstab.find5
-RECOVERY_FSTAB_VERSION = 2
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
@@ -109,21 +113,48 @@ BOARD_HAVE_NEW_QC_GPS := true
 #TARGET_NO_RPC := true
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK -DQCOM_BSP_CAMERA_ABI_HACK -DNEW_ION_API
+COMMON_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK -DQCOM_BSP_CAMERA_ABI_HACK
 
 TARGET_RELEASETOOLS_EXTENSIONS := device/oppo/find5
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# Audio
+# Audio/media
 BOARD_USES_ALSA_AUDIO:= true
 TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_USES_QCOM_MM_AUDIO := true
-TARGET_USES_QCOM_COMPRESSED_AUDIO := true
-BOARD_AUDIO_CAF_LEGACY_INPUT_BUFFERSIZE := true
-
 BOARD_HAVE_LOW_LATENCY_AUDIO := true
+TARGET_QCOM_MEDIA_VARIANT := caf
+BOARD_USES_FLUENCE_INCALL := true
+# maxwen: this is actually only needed because
+# of a bug in audio-caf when BOARD_USES_FLUENCE_INCALL := true
+# to enter the default else path
+BOARD_USES_SEPERATED_AUDIO_INPUT := true
+BOARD_USES_SEPERATED_VOICE_SPEAKER := true
 
 -include vendor/oppo/find5/BoardConfigVendor.mk
 
-BOARD_HAS_NO_SELECT_BUTTON := true
+# selinux - maxwen: disabled for now
+#BOARD_SEPOLICY_DIRS := \
+#       device/oppo/find5/sepolicy
+
+#BOARD_SEPOLICY_UNION := \
+#       app.te \
+#      bluetooth.te \
+#       compatibility.te \
+#       device.te \
+#       domain.te \
+#       drmserver.te \
+#       file.te \
+#       file_contexts \
+#       hci_init.te \
+#       init_shell.te \
+#       keystore.te \
+#       mediaserver.te \
+#       kickstart.te \
+#       nfc.te \
+#       rild.te \
+#       surfaceflinger.te \
+#       system.te \
+#       ueventd.te \
+#       wpa.te
+
