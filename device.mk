@@ -135,9 +135,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.audio.fluence.mode=endfire \
 	persist.audio.lowlatency.rec=false \
 	af.resampler.quality=4 \
-	lpa.decode=false \
+	lpa.decode=true \
 	tunnel.decode=false \
-	tunnel.audiovideo.decode=true
+	tunnel.audiovideo.decode=false
 
 # Debugging
 PRODUCT_PROPERTY_OVERRIDES += \
