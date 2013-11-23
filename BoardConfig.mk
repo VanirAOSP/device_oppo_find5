@@ -132,28 +132,25 @@ BOARD_USES_SEPERATED_VOICE_SPEAKER := true
 
 -include vendor/oppo/find5/BoardConfigVendor.mk
 
-# selinux - maxwen: disabled for now
-#BOARD_SEPOLICY_DIRS := \
-#       device/oppo/find5/sepolicy
+# SELinux
+BOARD_SEPOLICY_DIRS := \
+        device/oppo/find5/sepolicy
 
-#BOARD_SEPOLICY_UNION := \
-#       app.te \
-#      bluetooth.te \
-#       compatibility.te \
-#       device.te \
-#       domain.te \
-#       drmserver.te \
-#       file.te \
-#       file_contexts \
-#       hci_init.te \
-#       init_shell.te \
-#       keystore.te \
-#       mediaserver.te \
-#       kickstart.te \
-#       nfc.te \
-#       rild.te \
-#       surfaceflinger.te \
-#       system.te \
-#       ueventd.te \
-#       wpa.te
-
+BOARD_SEPOLICY_UNION := \
+       app.te \
+       bluetooth.te \
+       device.te \
+       domain.te \
+       drmserver.te \
+       file.te \
+       file_contexts \
+       hci_init.te \
+       init_shell.te \
+       keystore.te \
+       mediaserver.te \
+       kickstart.te \
+       rild.te \
+       surfaceflinger.te \
+       system.te \
+       ueventd.te \
+       wpa.te
