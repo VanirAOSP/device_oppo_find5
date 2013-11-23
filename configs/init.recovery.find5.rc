@@ -1,4 +1,7 @@
 on init
+    # Brightness
+    write /sys/class/leds/lcd-backlight/brightness 254
+
     # Enable Power modes and set the CPU Freq Sampling rates
     write /sys/module/rpm_resources/enable_low_power/L2_cache 1
     write /sys/module/rpm_resources/enable_low_power/pxo 1

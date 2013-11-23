@@ -86,8 +86,8 @@ TARGET_USES_C2D_COMPOSITION := true
 # Recovery
 TARGET_RECOVERY_FSTAB := device/oppo/find5/configs/fstab.find5
 RECOVERY_FSTAB_VERSION := 2
-USE_SET_METADATA := false
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/oppo/find5/recovery/recovery_keys.c
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 
