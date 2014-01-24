@@ -1,17 +1,7 @@
 #!/bin/sh
 
-VENDOR=oppo
-DEVICE=find5
+set -e
 
-BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
-rm -rf $BASE/*
-
-for FILE in `cat proprietary-blobs.txt | grep -v ^# | grep -v ^$ | sed -e 's#^/system/##g'`; do
-    DIR=`dirname $FILE`
-    if [ ! -d $BASE/$DIR ]; then
-        mkdir -p $BASE/$DIR
-    fi
-    adb pull /system/$FILE $BASE/$FILE
-done
-
-./setup-makefiles.sh
+export DEVICE=find5
+export VENDOR=oppo
+./../apq8064-common/extract-files.sh $@
