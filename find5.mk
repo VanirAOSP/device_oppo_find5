@@ -49,6 +49,10 @@ PRODUCT_PACKAGES += \
     tpupdate.rle \
     wlan.rle
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
+
 # call the proprietary setup
 $(call inherit-product-if-exists, vendor/oppo/find5/find5-vendor.mk)
 
