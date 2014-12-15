@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
+#include "camera/CameraParametersExtraDurationTimer.h"
+
 #define CAMERA_PARAMETERS_EXTRA_C \
 const char CameraParameters::KEY_AE_BRACKET_HDR[] = "ae-bracket-hdr"; \
 const char CameraParameters::KEY_SCENE_DETECT[] = "scene-detect"; \
 const char CameraParameters::KEY_CAMERA_MODE[] = "camera-mode"; \
 const char CameraParameters::KEY_POWER_MODE[] = "power-mode"; \
+CAMERA_PARAMETERS_EXTRA_C_DURATION_TIMER
 
 #define CAMERA_PARAMETERS_EXTRA_H \
     static const char KEY_AE_BRACKET_HDR[]; \
